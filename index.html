@@ -75,7 +75,7 @@
 </style>
     <script>
         document.body.addEventListener('touchstart',function(){});
-      var btn=document.querySelector(".table");
+      var btn=document.querySelectorAll("ul > li");
         for(var i = 0; i < btn.length; i++){
             btn[i].addEventListener('touchstart', function(){this.className = "ul > li > span:hover::before";}, false);
             btn[i].addEventListener('touchend', function(){this.className = "ul > li > span:hover::after";}, false);
