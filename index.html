@@ -73,21 +73,30 @@
         transform: rotateX(50deg) translateY(5px)
     }
 </style>
+    <script>
+        document.body.addEventListener('touchstart',function(){});
+      var btn=document.querySelector(".table");
+        for(var i = 0; i < btn.length; i++){
+            btn[i].addEventListener('touchstart', function(){this.className = "ul > li > span:hover::before";}, false);
+            btn[i].addEventListener('touchend', function(){this.className = "ul > li > span:hover::after";}, false);
+        }
+        
+        </script>
 </head>
 <body>
-    <ul>
-        <li>
+    <ul >
+        <li class = "table">
             <span data="H">H</span>
             <span data="E">E</span>
             <span data="L">L</span>
             <span data="L">L</span>
             <span data="O">O</span>
         </li>
-        <li>
+        <li class = "table">
             <span data="M">M</span>
             <span data="Y">Y</span>
         </li>
-        <li>
+        <li class = "table">
             <span data="H">H</span>
             <span data="O">O</span>
             <span data="N">N</span>
