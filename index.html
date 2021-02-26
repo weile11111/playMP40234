@@ -1,111 +1,102 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>宝贝</title>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PY81R3NVY4"></script>
-     <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-PY81R3NVY4');
-     </script>
-
-    <style>
-        @import url(https://fonts.googleapis.com/css?family=Khula:700);
-
-        body {
-            background: #111;
-        }
-
-        .hidden {
-            opacity: 0;
-        }
-
-        .console-container {
-
-            font-family: Khula;
-            font-size: 190px;
-            text-align: center;
-            height: 200px;
-            width: 600px;
-            display: block;
-            position: absolute;
-            color: white;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin:250px auto;
-        }
-
-        .console-underscore {
-            display: inline-block;
-            position: relative;
-            top: -0.14em;
-            left: 10px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cRack</title>
 </head>
-
 <body>
-
-    <div class='console-container'><span id='text'></span>
-        <div class='console-underscore' id='console'>&#95;</div>
-    </div>
-    <script type="text/javascript" defer="true">
-        
-        function consoleText(words, id, colors) {
-            if (colors === undefined) colors = ['#fff'];
-            var visible = true;
-            var con = document.getElementById('console');
-            var letterCount = 1;
-            var x = 1;
-            var waiting = false;
-            var target = document.getElementById(id)
-            target.setAttribute('style','color:' + colors[0])
-            window.setInterval(function () {
-                
-                if (letterCount === 0 && waiting === false) {
-                    waiting = true;
-                    target.innerHTML = words[0].substring(0, letterCount)
-                    window.setTimeout(function () {
-                        var usedColor = colors.shift();
-                        colors.push(usedColor);
-                        var usedWord = words.shift();
-                        words.push(usedWord);
-                        x = 1;
-                        target.setAttribute('style', 'color:' + colors[0])
-                        letterCount += x;
-                        waiting = false;
-                    }, 1000)
-                } else if (letterCount === words[0].length + 1 && waiting === false) {
-                    waiting = true;
-                    window.setTimeout(function () {
-                        x = -1;
-                        letterCount += x;
-                        waiting = false;
-                    }, 1000)
-                } else if (waiting === false) {
-                    target.innerHTML = words[0].substring(0, letterCount)
-                    letterCount += x;
-                }
-            }, 120)
-            window.setInterval(function () {
-                if (visible === true) {
-                    con.className = 'console-underscore hidden'
-                    visible = false;
-                    
-                } else {
-                    con.className = 'console-underscore'
-                    
-                    visible = true;
-                }
-            }, 400)
-        }
-        consoleText(['Hi!', 'My honey', 'I love you.'], 'text', ['tomato', 'rebeccapurple', 'lightblue']);
-        </script>
+    <ul>
+        <li>
+            <span data="H">H</span>
+            <span data="E">E</span>
+            <span data="L">L</span>
+            <span data="L">L</span>
+            <span data="O">O</span>
+            <span data="W">W</span>
+        </li>
+        <li>
+            <span data="M">M</span>
+            <span data="Y">Y</span>
+        </li>
+        <li>
+            <span data="H">H</span>
+            <span data="O">O</span>
+            <span data="N">N</span>
+            <span data="E">E</span>
+            <span data="Y">Y</span>
+        </li>
+    </ul>
 </body>
-
 </html>
+ 
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+ 
+    html {
+        height: 100%;
+    }
+ 
+    body {
+        background-color: brown;
+    }
+ 
+    ul {
+        list-style: none;
+        padding-top: 100px;
+    }
+ 
+    ul > li {
+        font-size: 0;
+        text-align: center;
+    }
+ 
+    ul > li > span {
+        display: inline-block;
+        /* border: 1px solid #000; */
+        width: 200px;
+        height: 200px;
+        font-size: 200px;
+        line-height: 200px;
+        text-align: center;
+        font-weight: bold;
+        position: relative;
+    }
+ 
+    ul > li > span::before, ul > li > span::after {
+        content: attr(data);
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+ 
+    ul > li > span::before{
+        color: rgb(0, 0, 0, 0.2);
+ 
+        transform: skew(5deg) translateX(10px);
+        transition: .2s;
+    }
+ 
+    ul > li > span::after{
+        color: brown;
+        text-shadow: 0 -2px 5px rgb(219, 104, 104);
+        transform-origin: 100% 0 0;
+        transform: rotateX(20deg);
+        transition: .2s;
+    }
+ 
+    ul > li > span:hover::before {
+        transform: skew(20deg) translateX(25px) scale(1, 1.1) translateY(10px)
+    }
+ 
+    ul > li > span:hover::after{
+        color: rgb(199, 72, 72);
+        transform: rotateX(50deg) translateY(5px)
+    }
+</style>
